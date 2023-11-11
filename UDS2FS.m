@@ -1,4 +1,4 @@
-function [W,G,obj] = UFDR_SDFS(X,Y, m,k)
+function [W,G,obj] = UDS2FS(X,Y, m,k)
 %% 0.≥ı ºªØ
 [d,n] = size(X);% X  ‰»Î£∫d*n
 c = length(unique(Y));
@@ -23,7 +23,6 @@ Sb = X*G/(G'*G)*G'*X'+eps*eye(d);
 obj = zeros(50,1);
 St=X*X';
 temp1 = trace(W'*Sw*W);
-%temp1 = sum(sum(L2_distance_1(W'*X,W'*X*G/(G'*G)*G')));
 temp2 = trace(W'*St*W);
 obj(1) = temp2/temp1;
 for iter = 2:50
@@ -45,7 +44,7 @@ for iter = 2:50
     %temp1 = sum(sum(L2_distance_1(W'*X,W'*X*G/(G'*G)*G')));
     temp2 = trace(W'*St*W);
     obj(iter) = temp2/temp1;
-%     if obj(iter)-obj(iter-1)<0.00001
+%     if obj(iter)-obj(iter-1)<0.00000001
 %         break
 %     end
 end
